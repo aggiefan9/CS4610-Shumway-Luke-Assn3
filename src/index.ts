@@ -1,21 +1,17 @@
-import express from "express";
-import { PrismaClient } from "@prisma/client";
+import express, { RequestHandler, Request } from "express";
+import { PrismaClient, Session, User } from "@prisma/client";
+import bcrypt from "bcrypt";
+import { v4 as uuidv4 } from 'uuid';
+import cookieParser from "cookie-parser";
+import { usersController } from "./controllers/users";
 
 const client = new PrismaClient();
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
-app.post('/users', async (req, res) => {
-  const user = await client.user.create({
-    data: {
-      firstName: "Joseph",
-      lastName: "Ditton",
-      email: "joseph.ditton@usu.edu",
-      passwordHash: "q23oejklnvzlskjfdnf"
-    }
-  });
-  res.json({ user });
-});
+
+usersController(app, client);
 
 app.get("/users", async (req, res) => {
   const users = await client.user.findMany();
