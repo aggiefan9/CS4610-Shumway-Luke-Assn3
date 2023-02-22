@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { PrismaClient, Session, User } from "@prisma/client";
 
 export type Route = {
     path: string,
@@ -16,7 +17,7 @@ export type CreateUserBody = {
     firstName: string,
     lastName: string,
     email: string,
-    password: string,
+    password: string
 }
     
 export type LoginBody = {
@@ -44,5 +45,17 @@ export type CreateHusbandryRecordBody = {
     length: number,
     weight: number,
     temperature: number,
-    humidity: number,
+    humidity: number
+}
+
+export type CreateScheduleBody = {
+    type: "feed" | "record" | "clean",
+    description: string,
+    monday: boolean,
+    tuesday: boolean,
+    wednesday: boolean,
+    thursday: boolean,
+    friday: boolean,
+    saturday: boolean,
+    sunday: boolean
 }

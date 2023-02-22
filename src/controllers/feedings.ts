@@ -13,7 +13,7 @@ const createFeeding = (client: PrismaClient): RequestHandler =>
                 id: reptileId
             }
         });
-        if (reptile?.userId == user.id) {
+        if (user && reptile?.userId == user?.id) {
             const date: Date = new Date();
             const feeding = await client.feeding.create({
                 data: {
@@ -38,7 +38,7 @@ const getFeedings = (client: PrismaClient): RequestHandler =>
                 id: reptileId
             }
         });
-        if (reptile?.userId == user.id) {
+        if (user && reptile?.userId == user?.id) {
             const feedings = await client.feeding.findMany({
                 where: {
                     reptileId

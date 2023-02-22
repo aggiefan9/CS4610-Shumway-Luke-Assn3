@@ -69,5 +69,5 @@ const login = (client: PrismaClient): RequestHandler =>
 export const usersController = controller(
     "users",
     [{ path: "/create", endpointBuilder: createUser, method: "post", skipAuth: true },
-        { path: "/login", endpointBuilder: login, method: "post", skipAuth: true }
+    { path: "/login", endpointBuilder: login, method: "post", skipAuth: true }
     ]);

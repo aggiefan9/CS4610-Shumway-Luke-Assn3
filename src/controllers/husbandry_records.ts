@@ -13,7 +13,7 @@ const createHusbandryRecord = (client: PrismaClient): RequestHandler =>
                 id: reptileId
             }
         });
-        if (reptile?.userId == user.id) {
+        if (user && reptile?.userId == user?.id) {
             const date: Date = new Date();
             const husbandryRecord = await client.husbandryRecord.create({
                 data: {
@@ -41,7 +41,7 @@ const getHusbandryRecords = (client: PrismaClient): RequestHandler =>
                 id: reptileId
             }
         });
-        if (reptile?.userId == user.id) {
+        if (user && reptile?.userId == user?.id) {
             const records = await client.husbandryRecord.findMany({
                 where: {
                     reptileId

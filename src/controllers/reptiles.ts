@@ -34,7 +34,7 @@ const updateReptile = (client: PrismaClient): RequestHandler =>
                 id,
             }
         });
-        if (oldReptile?.userId == user.id) {
+        if (oldReptile?.userId == user?.id) {
             const date: Date = new Date();
             if (name) {
                 let reptile = await client.reptile.update({
@@ -100,7 +100,7 @@ const deleteReptile = (client: PrismaClient): RequestHandler =>
                 id
             }
         });
-        if (repToDelete?.userId == user.id) {
+        if (repToDelete?.userId == user?.id) {
             const deleted = await client.reptile.delete({
                 where: {
                     id
