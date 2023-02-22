@@ -1,31 +1,25 @@
-import express, { RequestHandler, Request } from "express";
-import { PrismaClient, Session, User } from "@prisma/client";
+import { RequestHandler } from "express";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from 'uuid';
 import { controller } from "../lib/controller";
+import { CreateUserBody, LoginBody } from "../dto/dto";
 
-type CreateUserBody = {
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string,
-}
 
-type LoginBody = {
-    email: string,
-    password: string
-    }
 
 const createUser = (client: PrismaClient): RequestHandler =>
     async (req, res) => {
         const {firstName, lastName, email, password} = req.body as CreateUserBody;
         const passwordHash = await bcrypt.hash(password, 10);
+        let date: Date = new Date();
         const user = await client.user.create({
             data: {
               firstName,
               lastName,
               email,
               passwordHash,
+              createdAt: date,
+              updatedAt: date,
               sessions: {
                 create: [{
                   token: uuidv4()
@@ -75,5 +69,5 @@ const login = (client: PrismaClient): RequestHandler =>
 export const usersController = controller(
     "users",
     [{ path: "/create", endpointBuilder: createUser, method: "post", skipAuth: true },
-        { path: "/login", endpointBuilder: login, method: "post" }
+        { path: "/login", endpointBuilder: login, method: "post", skipAuth: true }
     ]);

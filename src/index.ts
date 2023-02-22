@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from 'uuid';
 import cookieParser from "cookie-parser";
 import { usersController } from "./controllers/users";
+import { reptilesController } from "./controllers/reptiles";
 
 const client = new PrismaClient();
 const app = express();
@@ -12,6 +13,7 @@ app.use(cookieParser());
 
 
 usersController(app, client);
+reptilesController(app, client);
 
 app.get("/users", async (req, res) => {
   const users = await client.user.findMany();

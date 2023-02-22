@@ -37,8 +37,8 @@ model Reptile {
   species String
   name String
   sex String
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   feedings Feeding[]
   husbandryRecords HusbandryRecord[]
   schedules Schedule[]
@@ -49,8 +49,8 @@ model Feeding {
   reptile Reptile @relation(fields: [reptileId], references: [id])
   reptileId Int
   foodItem String
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model HusbandryRecord {
@@ -61,8 +61,8 @@ model HusbandryRecord {
   weight Float
   temperature Float
   humidity Float
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Schedule {
@@ -80,6 +80,6 @@ model Schedule {
   friday Boolean
   saturday Boolean
   sunday Boolean
-  createdAt DateTime
-  updatedAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
