@@ -1,11 +1,10 @@
-import express, { RequestHandler, Request } from "express";
-import { PrismaClient, Session, User } from "@prisma/client";
-import bcrypt from "bcrypt";
-import { v4 as uuidv4 } from 'uuid';
+import express from "express";
+import { PrismaClient} from "@prisma/client";
 import cookieParser from "cookie-parser";
 import { usersController } from "./controllers/users";
 import { reptilesController } from "./controllers/reptiles";
 import { feedingsController } from "./controllers/feedings";
+import { husbandryController } from "./controllers/husbandry_records";
 
 const client = new PrismaClient();
 const app = express();
@@ -16,6 +15,7 @@ app.use(cookieParser());
 usersController(app, client);
 reptilesController(app, client);
 feedingsController(app, client);
+husbandryController(app, client);
 
 app.get("/users", async (req, res) => {
   const users = await client.user.findMany();

@@ -39,3 +39,10 @@ export type UpdateReptileBody = {
 export type CreateFeedingBody = {
     foodItem: string
 }
+
+export type CreateHusbandryRecordBody = {
+    length: number,
+    weight: number,
+    temperature: number,
+    humidity: number,
+}
