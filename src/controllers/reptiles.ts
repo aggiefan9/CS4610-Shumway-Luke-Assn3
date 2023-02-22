@@ -7,8 +7,8 @@ const createReptile = (client: PrismaClient): RequestHandler =>
     async (req: RequestWithSession, res) => {
         const {name, species, sex} = req.body as CreateReptileBody;
         const user = req.user;
-        let date: Date = new Date();
         if (user) {
+            let date: Date = new Date();
             const reptile = await client.reptile.create({
                 data: {
                 name,
@@ -20,8 +20,9 @@ const createReptile = (client: PrismaClient): RequestHandler =>
                 },
             });
             res.json({ reptile });
+        } else {
+            res.status(404).json({message: "An error has occured"});
         }
-        res.status(404).json({message: "An error has occured"});
     }
 
 const updateReptile = (client: PrismaClient): RequestHandler =>
@@ -34,7 +35,7 @@ const updateReptile = (client: PrismaClient): RequestHandler =>
                 id,
             }
         });
-        if (oldReptile?.userId == user?.id) {
+        if (user && oldReptile?.userId == user?.id) {
             const date: Date = new Date();
             if (name) {
                 let reptile = await client.reptile.update({
@@ -100,7 +101,7 @@ const deleteReptile = (client: PrismaClient): RequestHandler =>
                 id
             }
         });
-        if (repToDelete?.userId == user?.id) {
+        if (user && repToDelete?.userId == user?.id) {
             const deleted = await client.reptile.delete({
                 where: {
                     id
