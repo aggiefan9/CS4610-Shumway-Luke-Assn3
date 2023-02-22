@@ -35,3 +35,7 @@ export type UpdateReptileBody = {
     name?: string,
     sex?: "m" | "f"
 }
+
+export type CreateFeedingBody = {
+    foodItem: string
+}

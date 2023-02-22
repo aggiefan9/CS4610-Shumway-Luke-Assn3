@@ -31,7 +31,7 @@ const updateReptile = (client: PrismaClient): RequestHandler =>
         const user = req.user;
         const oldReptile = await client.reptile.findFirst({
             where: {
-                id
+                id,
             }
         });
         if (oldReptile?.userId == user.id) {
@@ -100,7 +100,7 @@ const deleteReptile = (client: PrismaClient): RequestHandler =>
                 id
             }
         });
-        if (repToDelete) {
+        if (repToDelete?.userId == user.id) {
             const deleted = await client.reptile.delete({
                 where: {
                     id
