@@ -28,18 +28,21 @@ export const Signup = () => {
       email,
       password
     };
-    const result = await fetch(`http://localhost:3000/users/create`, { // Need to fix the 
-      method: 'post',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(body)
-    });
-    const res = await result.json()
-    console.log(res);
-    if (!res.message) {
-      setPage("dashboard");
+    if (firstName != "" && lastName != "" && email != "" && password != "") {
+      const result = await fetch(`http://localhost:3000/users/create`, { // Need to fix the 
+        method: 'post',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(body)
+      });
+      const res = await result.json()
+      if (!res.message) {
+        setPage("dashboard");
+      } else {
+        setIsDisplayed(true);
+      }
     } else {
       setIsDisplayed(true);
     }
@@ -48,7 +51,9 @@ export const Signup = () => {
   return (
       <div className="signup">
         <div>
-          <h2>Signup</h2>
+          <h1 className="header">Signup</h1>
+        </div>
+        <div className="container">
           <form className="signup-form">
           <div>
                 <p>First Name</p>

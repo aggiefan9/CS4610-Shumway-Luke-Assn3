@@ -35,7 +35,6 @@ export const Login = () => {
       body: JSON.stringify(body)
     });
     const res = await result.json()
-    console.log(res);
     if (!res.message) {
       setPage("dashboard");
     } else {
@@ -46,21 +45,25 @@ export const Login = () => {
   return (
     <div className="login">
       <div>
-        <h2>Login</h2>
-        <form className="login-form">
-          <div>
-              <p>Email</p>
-              <input value={email} onChange={e => setEmail(e.target.value)} type="email" />
-          </div>
-          <div>
-              <p>Password</p>
-              <input value={password} onChange={e => setPassword(e.target.value)} type="password" />
-          </div>
-          
-          <button type="button" onClick={logIn}>Log In</button>
-        </form>
+        <h1 className="header">Login</h1>
+      </div>
+      <div className="container">
+        <div>
+          <form className="login-form">
+            <div>
+                <p>Email</p>
+                <input value={email} onChange={e => setEmail(e.target.value)} type="email" />
+            </div>
+            <div>
+                <p>Password</p>
+                <input value={password} onChange={e => setPassword(e.target.value)} type="password" />
+            </div>
+            
+            <button type="button" onClick={logIn}>Log In</button>
+          </form>
         </div>
-        <div className={`toast ${isDisplayed ? 'open' : ''}`}>An error occured. Please try again</div>
+      </div>
+      <div className={`toast ${isDisplayed ? 'open' : ''}`}>An error occured. Please try again</div>
     </div>
     );
   }

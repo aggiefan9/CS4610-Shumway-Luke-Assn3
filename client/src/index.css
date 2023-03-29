@@ -16,21 +16,32 @@
 
 body {
   display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.container {
+  /* width: 100vw;
+  height: 100vh; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
 }
 
 .login {
-  margin: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .signup {
-  margin: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -56,6 +67,15 @@ body {
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 10px;
+  text-align: left;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .reptile {
@@ -63,8 +83,22 @@ body {
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 10px;
+  text-align: left;
 }
 
 .Delete {
   text-align: right;
+}
+
+.header {
+  background-color: rgb(15,36,57);
+  width: 100vw;
+  justify-content: center;
+  text-align: center;
+}
+
+.create {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

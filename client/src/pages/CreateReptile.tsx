@@ -36,7 +36,6 @@ export const CreateReptile = () => {
         body: JSON.stringify(body)
       });
       const res = await result.json()
-      console.log(res);
       if (!res.message) {
         setPage("dashboard");
       } else {
@@ -49,30 +48,34 @@ export const CreateReptile = () => {
 
   return (
     <div className="CreateReptile">
-      <h1>Create a Reptile</h1>
-      <form className="CreateReptile">
-        <div>
-          Name
-          <input value={name} onChange={e => setName(e.target.value)} type="text"/>
+      <h1 className="header">Create a Reptile</h1>
+      <div className="container">
+        <div >
+          <form className="create">
+            <div>
+              <div>Name</div>
+              <input value={name} onChange={e => setName(e.target.value)} type="text"/>
+            </div>
+            <div>
+              <div>Sex</div>
+              <select value={sex} onChange={e => setSex(e.target.value)}>
+                <option>M</option>
+                <option>F</option>
+              </select>
+            </div>
+            <div>
+              <div>Species</div>
+              <select value={species} onChange={e => setSpecies(e.target.value)}>
+                <option>King Snake</option>
+                <option>Ball Python</option>
+                <option>Redtail Boa</option>
+                <option>Corn Snake</option>
+              </select>
+            </div>
+            <button onClick={() => createReptile()}>Save</button>
+          </form>
         </div>
-        <div>
-          Sex
-          <select value={sex} onChange={e => setSex(e.target.value)}>
-            <option>M</option>
-            <option>F</option>
-          </select>
-        </div>
-        <div>
-          Species
-          <select value={species} onChange={e => setSpecies(e.target.value)}>
-            <option>King Snake</option>
-            <option>Ball Python</option>
-            <option>Redtail Boa</option>
-            <option>Corn Snake</option>
-          </select>
-        </div>
-        <button onClick={() => createReptile()}>Create</button>
-      </form>
+      </div>
       <div className={`toast ${isDisplayed ? 'open' : ''}`}>An error occured. Please try again</div>
     </div>
   );

@@ -80,59 +80,61 @@ export const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
-      <div className="schedules">
-        <h2>Schedules</h2>
-        Schedules for Today: {days[day]}
-        {
-          schedules.map((schedule) => (
-            <div key={schedule.id} className="schedule">
-              {( (schedule.monday && day===1) ||
-                  (schedule.tuesday && day===2) ||
-                  (schedule.wednesday && day===3) ||
-                  (schedule.thursday && day===4) ||
-                  (schedule.friday && day===5) ||
-                  (schedule.saturday && day===6) ||
-                  (schedule.sunday && day===0)) ? <div>
-                    <p>
-                      Description: {schedule.description} for Reptile #{schedule.reptileId}
-                    </p><p>
-                      Monday: {schedule.monday ? 'Yes' : 'No' }
-                    </p><p>
-                      Tuesday: {schedule.tuesday ? 'Yes' : 'No' }
-                    </p><p>
-                      Wednesday: {schedule.wednesday ? 'Yes' : 'No' }
-                    </p><p>
-                      Thursday: {schedule.thursday ? 'Yes' : 'No' }
-                    </p><p>
-                      Friday: {schedule.friday ? 'Yes' : 'No' }
-                    </p><p>
-                      Saturday: {schedule.saturday ? 'Yes' : 'No' }
-                    </p><p>
-                      Sunday: {schedule.sunday ? 'Yes' : 'No' }
-                    </p>
-                  </div>
-                : <div></div>}
-            </div>
-          ))
-        }
-      </div>
-      <div className="reptiles">
-        <h2>Reptiles</h2>
-        {
-          reptiles.map((reptile) => (
-            <div key={reptile.id} className="reptile" >
-              <p className="Delete"><button onClick={() => deleteReptile(reptile.id)}>Delete</button></p>
-              <div onClick={() => { setReptileId(reptile.id); setPage("reptile"); }}>
-                <p>ID: {reptile.id}</p>
-                <p>Species: {reptile.species.split("_")[0]} {reptile.species.split("_")[1]}</p>
-                <p>Name: {reptile.name}</p>
-                <p>Sex: {reptile.sex}</p>
+      <h1 className="header">Dashboard</h1>
+      <div className="container">
+        <div className="list">
+          <h2>Schedules</h2>
+          <p>Schedules for Today: {days[day]}</p>
+          {
+            schedules.map((schedule) => (
+              <div key={schedule.id} className="schedule">
+                {( (schedule.monday && day===1) ||
+                    (schedule.tuesday && day===2) ||
+                    (schedule.wednesday && day===3) ||
+                    (schedule.thursday && day===4) ||
+                    (schedule.friday && day===5) ||
+                    (schedule.saturday && day===6) ||
+                    (schedule.sunday && day===0)) ? <div>
+                      <div>
+                        Description: {schedule.description} for Reptile #{schedule.reptileId}
+                      </div><div>
+                        Monday: {schedule.monday ? 'Yes' : 'No' }
+                      </div><div>
+                        Tuesday: {schedule.tuesday ? 'Yes' : 'No' }
+                      </div><div>
+                        Wednesday: {schedule.wednesday ? 'Yes' : 'No' }
+                      </div><div>
+                        Thursday: {schedule.thursday ? 'Yes' : 'No' }
+                      </div><div>
+                        Friday: {schedule.friday ? 'Yes' : 'No' }
+                      </div><div>
+                        Saturday: {schedule.saturday ? 'Yes' : 'No' }
+                      </div><div>
+                        Sunday: {schedule.sunday ? 'Yes' : 'No' }
+                      </div>
+                    </div>
+                  : <div></div>}
               </div>
-            </div>
-          ))
-        }
-        <button onClick={() => setPage("createReptile")}>Add a Reptile</button>
+            ))
+          }
+        </div>
+        <div className="list">
+          <h2>Reptiles</h2>
+          {
+            reptiles.map((reptile) => (
+              <div key={reptile.id} className="reptile" >
+                <div className="Delete"><button onClick={() => deleteReptile(reptile.id)}>Delete</button></div>
+                <div onClick={() => { setReptileId(reptile.id); setPage("reptile"); }}>
+                  <div>ID: {reptile.id}</div>
+                  <div>Species: {reptile.species.split("_")[0]} {reptile.species.split("_")[1]}</div>
+                  <div>Name: {reptile.name}</div>
+                  <div>Sex: {reptile.sex}</div>
+                </div>
+              </div>
+            ))
+          }
+          <button onClick={() => setPage("createReptile")}>Add a Reptile</button>
+        </div>
       </div>
     </div>
   );
