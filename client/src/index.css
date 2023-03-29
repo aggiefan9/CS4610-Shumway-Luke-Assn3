@@ -1,0 +1,70 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.login {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toast {
+  position: fixed;
+  padding: 16px;
+  color: white;
+  background-color: rgb(15,36,57);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100px);
+  transition: all .3s ease;
+}
+
+.toast.open {
+  transform: translateY(0px);
+}
+
+.schedule {
+  background-color: #343434;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 10px;
+}
+
+.reptile {
+  background-color: #343444;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 10px;
+}
+
+.Delete {
+  text-align: right;
+}
