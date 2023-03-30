@@ -49,7 +49,7 @@ export const CreateFeeding = () => {
         <div className="CreateFeeding">
             <h1 className="header">Create a Feeding for Reptile #{reptileId}</h1>
             <div className="container">
-                <form>
+                <form className="create">
                     <div>Food Item</div>
                     <input value={foodItem} onChange={e => setFoodItem(e.target.value)} />
                     <button onClick={() => createFeeding()}>Save</button>

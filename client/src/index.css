@@ -17,15 +17,12 @@
 body {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   text-align: center;
 }
 
 .container {
-  /* width: 100vw;
-  height: 100vh; */
   flex: 1;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +60,7 @@ body {
 }
 
 .schedule {
-  background-color: #343434;
+  background-color: #343444;
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 10px;
@@ -79,7 +76,7 @@ body {
 }
 
 .reptile {
-  background-color: #343444;
+  background-color: #343434;
   padding-left: 6px;
   padding-right: 6px;
   border-radius: 10px;
@@ -101,4 +98,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.feeding {
+  background-color: #344434;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.husbandry {
+  background-color: #443434;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 10px;
+  text-align: left;
 }

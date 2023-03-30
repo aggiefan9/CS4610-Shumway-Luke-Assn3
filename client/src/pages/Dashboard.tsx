@@ -79,7 +79,7 @@ export const Dashboard = () => {
   }, [schedules]);
 
   return (
-    <div className="dashboard">
+    <div className="">
       <h1 className="header">Dashboard</h1>
       <div className="container">
         <div className="list">

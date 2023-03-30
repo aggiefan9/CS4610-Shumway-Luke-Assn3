@@ -171,7 +171,7 @@ export const Reptile = () => {
   }, [schedules]);
 
   return (
-    <div className="schedules">
+    <div>
       <h1 className="header">Reptile</h1>
         <div className="container">
           {!isEdit ? <div>
@@ -202,7 +202,7 @@ export const Reptile = () => {
             {
               feedings.map((feeding) => (
                 <div key={feeding.id} className="feeding">
-                  {feeding.foodItem}
+                  Food: {feeding.foodItem}
                 </div>
               ))
             }
@@ -212,11 +212,11 @@ export const Reptile = () => {
             <h2>Husbandry Records</h2>
             {
               husbandries.map((husbandry) => (
-                <div key={husbandry.id}>
-                  <div>{husbandry.length}</div>
-                  <div>{husbandry.weight}</div>
-                  <div>{husbandry.temperature}</div>
-                  <div>{husbandry.humidity}</div>
+                <div key={husbandry.id} className="husbandry">
+                  <div>Length: {husbandry.length}</div>
+                  <div>Weight: {husbandry.weight}</div>
+                  <div>Temperature: {husbandry.temperature}</div>
+                  <div>Humidity: {husbandry.humidity}</div>
                 </div>
               ))
             }
